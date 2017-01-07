@@ -17,10 +17,11 @@
         <h5>{{work.category}}</h5>
         <h2>{{work.title}}</h2>
         <p>{{work.content_txt}}</p>
-        <p><a class="btn btn-default" href="#" role="button">자세히보기</a></p>
+        <p><a class="btn btn-default" href="/{{ work.id }}/" role="button">자세히보기</a></p>
       </div>
     {% endfor %}
   </div>
 </div>
+
 <!-- <i class="fa fa-address-book fa-spin" aria-hidden="true"></i> -->
 {% endblock %}

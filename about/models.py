@@ -27,11 +27,27 @@ class Work(models.Model):
 
 # 댓글
 class Comment(models.Model):
+    RECEIVED = "rec"
+    UNRECEIVED = "un"
+    CATEGORIES = (
+        (RECEIVED, "승인"),
+        (UNRECEIVED, "미승인"),
+    )
     work = models.ForeignKey(
-        Work, on_delete=models.CASCADE
+        Work,
+        related_name="work_comment",
+        on_delete=models.CASCADE
+    )
+    category = models.CharField(
+        max_length=10,
+        choices=CATEGORIES,
+        default=UNRECEIVED
     )
     username = models.CharField(max_length=50)
     content = models.TextField()
+
+    def __str__(self):
+        return "[ {} ] {},{}/ {} : {}".format(self.category, self.work.category, self.work.title, self.username, self.content)
 
 # # 좋아요
 # class Like(models.Model):

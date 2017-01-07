@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+{% include "nav_bar.html" %}
+<div class="container">
+    <h2>{{selected_work.title}}</h2>
+    <p>{{selected_work.content_txt}}</p>
+
+    <div>
+      {% for comment in selected_work.work_comment.all %}
+          {% if comment.category == "rec" %}
+            <div>{{ comment.username }} : {{ comment.content }}</div>
+          {% endif %}
+      {% endfor %}
+    </div>
+
+    <form class="form-inline" method="post" action="">
+      <div class="form-group">
+        {% csrf_token %}
+        <div class="row">
+          <input class="form-control" name="username" placeholder="이름"/>
+          <input class="form-control" name="content" placeholder="글 내용"/>
+          <button class="btn btn=default" role="button" type="submit">댓글 달기</button>
+        </div>
+      </div>
+    </form>
+</div>
+{% endblock %}
