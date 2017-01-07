@@ -19,3 +19,12 @@
     font-weight: 500;
     color: #cdddeb;
 }
+
+.comment-bg{
+  background-color: #88b04b; /*Pantone : Greenery*/
+}
+
+.comment-bg h3{
+  padding: 5px;
+  color: #ffffff;
+}

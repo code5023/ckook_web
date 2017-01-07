@@ -13,8 +13,10 @@ class Work(models.Model):
         (WEB, "웹"),
     )
 
-    author = models.CharField(max_length=30)
+    developer = models.CharField(max_length=30)
     title = models.CharField(max_length=50)
+    enterprise = models.CharField(max_length=50, null=True, blank=True)
+    image = models.FileField(null=True, blank=True)
     category = models.CharField(
         max_length=10,
         choices=CATEGORIES,
@@ -23,7 +25,7 @@ class Work(models.Model):
     content_txt = models.TextField()
 
     def __str__(self):
-        return "[ {} ] {}, {}".format(self.category, self.title, self.author)
+        return "[ {} ] {}, {}".format(self.category, self.title, self.developer)
 
 # 댓글
 class Comment(models.Model):
